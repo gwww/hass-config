@@ -1,0 +1,112 @@
+@+ from button import homekit_light_button +@
+@+ from light_block import light_block +@
+@+ from block_label import block_label +@
+
+title: Westmin
+views:
+  - title: Home
+    path: default_view
+    panel: true
+    badges: []
+    cards:
+      - type: custom:mod-card
+        style:
+          "ha-card > layout-card":
+            $: >
+              #columns > div.column.cards:first-child {background: #464646;
+              height: 100vh; padding: 0 15px 15px 15px;}
+              #columns > div.column.cards:nth-child(2)
+              {background:radial-gradient(ellipse at center,
+              rgba(87,87,87,1) 0%, rgba(26,26,26,1) 100%);
+              height: 100vh; padding: 0 15px 15px 15px;}
+        card:
+          type: custom:layout-card
+          layout: horizontal
+          min_columns: 2
+          column_width: [25%, 75%]
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: markdown
+                  content: |
+                    # {{states('sensor.time')}}
+                    ### {{as_timestamp(states('sensor.date')) | timestamp_custom('%A, %B %-d')}}
+                    #### Next sunrise: {{states('sensor.nextsunrise')}}
+                    #### Next sunset: {{states('sensor.nextsunset')}}
+                  style:
+                    .: >
+                      ha-card {background: none; box-shadow: none; color: #BBB;
+                      font-family: "SF Text", sans-serif;
+                      text-align: center; margin-top: 40px;}
+                    "ha-card > ha-markdown":
+                      $: >
+                        h1 {font-weight: 300; font-size: 6em; margin-bottom: 45px}
+                        h2 {font-weight: 300; font-size: 4.5em;}
+                        h3 {font-weight: 300; font-size: 2em;}
+                        h4 {font-weight: 300; font-size: 1.25em; margin: 5px 0 5px 0;}
+                - type: weather-forecast
+                  entity: weather.home
+                  name: Ottawa
+                  style: |
+                    ha-card {background: none; color: #e3e3e3}
+            - type: custom:layout-card
+              layout: grid
+              gridcols: 1fr 1fr 1fr
+              cards:
+                - @%block_label("Kitchen")%@
+                - @%block_label("Halls")%@
+                - @%block_label("Outdoors")%@
+
+                - @% light_block() %@
+                    - @% homekit_light_button("Pendants",
+                          "light.kitchen_pendants", "icons/pendant.svg") %@
+                    - @% homekit_light_button("Pots",
+                          "light.kitchen_pots", "icons/pot-light.svg") %@
+                    - @% homekit_light_button("Table",
+                          "light.kitchen_table", "icons/pot-light.svg") %@
+
+                - @% light_block() %@
+                    - @%homekit_light_button("Main",
+                          "light.main_hall_pots", "icons/pot-light.svg")%@
+                    - @%homekit_light_button("Lower",
+                          "light.basement_hall_stairs", "icons/pot-light.svg")%@
+                    - @%homekit_light_button("Utility Room",
+                          "light.basement_utillity_room", "icons/pot-light.svg")%@
+
+                - @% light_block() %@
+                    - @%homekit_light_button("Garage",
+                          "light.outdoors_garage_pots", "icons/pot-light.svg")%@
+                    - @%homekit_light_button("Porch",
+                          "light.outdoors_front_porch", "icons/pot-light.svg")%@
+                    - @%homekit_light_button("Lawn Lamp",
+                          "light.outdoors_lawn_lamp", "icons/pot-light.svg")%@
+                    - @%homekit_light_button("Low Voltage",
+                          "light.outdoors_low_volt_lights", "icons/pot-light.svg")%@
+
+                - @%block_label("Family Room")%@
+                - @%block_label("Living Room")%@
+                - @%block_label("Dining Room")%@
+
+                - @% light_block() %@
+                    - @%homekit_light_button("Pots",
+                          "light.family_room_pots", "icons/pot-light.svg")%@
+                      tap_action:
+                        action: call-service
+                        service: light.toggle
+                        service_data:
+                          entity_id: entity
+                          brightness_pct: 50
+                    - @%homekit_light_button("Christmas tree",
+                          "light.family_room_christmas_tree")%@
+
+                - @% light_block() %@
+                    - @%homekit_light_button("Lamps",
+                          "light.living_room_lamps", "icons/lr-lamp.svg")%@
+                    - @%homekit_light_button("Pots",
+                          "light.living_room_pot_lights", "icons/pot-light.svg")%@
+
+                - @% light_block() %@
+                    - @%homekit_light_button("Chandelier",
+                          "light.dining_room_chandelier", "icons/chandelier.svg")%@
+                    - @%homekit_light_button("Pots",
+                          "light.dining_room_pots", "icons/pot-light.svg")%@

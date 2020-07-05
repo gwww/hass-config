@@ -1,0 +1,76 @@
+logger:
+  default: info
+
+# Text to speech
+# tts:
+#   - platform: google_translate
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+lovelace:
+  mode: yaml
+  resources:
+    [
+      {url: "/local/cards/button-card.js?v=22", type: module},
+      {url: "/local/cards/card-mod.js?v=22", type: module},
+      {url: "/local/cards/custom-header.js?v=22", type: module},
+      {url: "/local/cards/layout-card.js?v=22", type: module},
+      {url: "/local/cards/light-popup-card.js?v=23", type: module},
+      {url: "/local/cards/simple-text-card.js?v=22", type: module},
+    ]
+
+# frontend:
+#   themes: !include_dir_merge_named frontend-themes
+
+browser_mod:
+  prefix: browser_
+  devices:
+    99980b13-dabc9563:
+      name: macbook_firefox
+
+sensor:
+  - platform: time_date
+    display_options:
+      ['time', 'date']
+
+  - platform: template
+    sensors:
+      nextsunrise:
+        friendly_name: 'Next Sunrise'
+        value_template: "{{as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%A %-H:%M')}}"
+
+      nextsunset:
+        friendly_name: 'Next Sunset'
+        value_template: "{{as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%A %-H:%M')}}"
+
+elkm1:
+  host: elk://192.168.1.201
+  temperature_unit: C
+  area:
+    include: [1]
+  counter:
+    include: [10]
+  keypad:
+    include: [1-3]
+  output:
+    include: [9]
+  task:
+    include: [1]
+  thermostat:
+    enabled: false
+  plc:
+    enabled: false
+    # include: [1-10, 13-14, 17-20, 22-23]
+  setting:
+    enabled: false
+  zone:
+    include: [1-5, 8, 10-31]
+
+group: !include includes/groups.yaml
+automation: !include includes/automations.yaml
+script: !include includes/scripts.yaml
+scene: !include includes/scenes.yaml
+
+recorder:
+  purge_keep_days: 5
