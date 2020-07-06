@@ -13,42 +13,18 @@ views:
         style:
           "ha-card > layout-card":
             $: >
-              #columns > div.column.cards:first-child {background: #464646;
-              height: 100vh; padding: 0 15px 15px 15px;}
+              #columns > div.column.cards:first-child 
+                {background: #464646; height: 100vh; padding: 0 15px 15px 15px;}
               #columns > div.column.cards:nth-child(2)
-              {background:radial-gradient(ellipse at center,
-              rgba(87,87,87,1) 0%, rgba(26,26,26,1) 100%);
-              height: 100vh; padding: 0 15px 15px 15px;}
+                {background:radial-gradient(ellipse at center, rgba(87,87,87,1) 0%,
+                rgba(26,26,26,1) 100%); height: 100vh; padding: 0 15px 15px 15px;}
         card:
           type: custom:layout-card
           layout: horizontal
           min_columns: 2
           column_width: [25%, 75%]
           cards:
-            - type: vertical-stack
-              cards:
-                - type: markdown
-                  content: |
-                    # {{states('sensor.time')}}
-                    ### {{as_timestamp(states('sensor.date')) | timestamp_custom('%A, %B %-d')}}
-                    #### Next sunrise: {{states('sensor.nextsunrise')}}
-                    #### Next sunset: {{states('sensor.nextsunset')}}
-                  style:
-                    .: >
-                      ha-card {background: none; box-shadow: none; color: #BBB;
-                      font-family: "SF Text", sans-serif;
-                      text-align: center; margin-top: 40px;}
-                    "ha-card > ha-markdown":
-                      $: >
-                        h1 {font-weight: 300; font-size: 6em; margin-bottom: 45px}
-                        h2 {font-weight: 300; font-size: 4.5em;}
-                        h3 {font-weight: 300; font-size: 2em;}
-                        h4 {font-weight: 300; font-size: 1.25em; margin: 5px 0 5px 0;}
-                - type: weather-forecast
-                  entity: weather.home
-                  name: Ottawa
-                  style: |
-                    ha-card {background: none; color: #e3e3e3}
+            @@include sidebar.yaml@@
             - type: custom:layout-card
               layout: grid
               gridcols: 1fr 1fr 1fr
