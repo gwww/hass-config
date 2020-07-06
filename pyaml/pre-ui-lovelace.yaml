@@ -88,8 +88,8 @@ views:
                 - @%block_label("Dining Room")%@
 
                 - @% light_block() %@
-                    - @%homekit_light_button("Pots",
-                          "light.family_room_pots", "icons/pot-light.svg")%@
+                    - @%homekit_light_button("Pots", "light.family_room_pots",
+                          "icons/pot-light.svg", tap=False)%@
                       tap_action:
                         action: call-service
                         service: light.toggle

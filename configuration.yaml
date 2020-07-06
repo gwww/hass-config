@@ -15,6 +15,7 @@ lovelace:
       {url: "/local/cards/button-card.js?v=22", type: module},
       {url: "/local/cards/card-mod.js?v=22", type: module},
       {url: "/local/cards/custom-header.js?v=22", type: module},
+      {url: "/local/cards/gap-card.js?v=22", type: module},
       {url: "/local/cards/layout-card.js?v=22", type: module},
       {url: "/local/cards/light-popup-card.js?v=23", type: module},
       {url: "/local/cards/simple-text-card.js?v=22", type: module},
