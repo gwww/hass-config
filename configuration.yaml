@@ -39,11 +39,15 @@ sensor:
     sensors:
       nextsunrise:
         friendly_name: 'Next Sunrise'
-        value_template: "{{as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%A %-H:%M')}}"
+        value_template: >
+          {{as_timestamp(states.sun.sun.attributes.next_rising) |
+              timestamp_custom('%A %-H:%M')}}
 
       nextsunset:
         friendly_name: 'Next Sunset'
-        value_template: "{{as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%A %-H:%M')}}"
+        value_template: >
+          {{as_timestamp(states.sun.sun.attributes.next_setting) |
+              timestamp_custom('%A %-H:%M')}}
 
 elkm1:
   host: elk://192.168.1.201

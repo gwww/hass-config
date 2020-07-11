@@ -5,12 +5,10 @@
 from svg import svg
 
 def homekit_light_button(name, entity, icon=None, tap=True, double_tap=True):
-    icon_str = f"icon: {icon}" if icon else ""
     tap_action  = "tap_action:\n  action: toggle\n  haptic: light" if tap else ""
     double_tap_action = _popup_action(name) if double_tap else ""
 
-    return f"""
-type: "custom:button-card" 
+    return f"""type: "custom:button-card" 
 name: {name}
 entity: {entity}
 aspect_ratio: 1/1
@@ -36,28 +34,23 @@ state:
     styles:
       card:
         - opacity: 1.0
-      state:
-        - color: gray
   - value: "off"
     styles:
       card:
         - opacity: 0.6
-      icon:
-        - color: gray
-      state:
-        - color: gray
+  - value: "Normal"
+    styles:
+      card:
+        - opacity: 0.6
   - value: "unavailable"
     styles:
       card:
         - opacity: 0.6
-      icon:
-        - color: black
 """
 
 
 def _homekit_style():
-    return f"""
-styles:
+    return f"""styles:
   card:
     - border-radius: 12px
     - background: #ececec
@@ -79,10 +72,10 @@ styles:
 """
 
 def _custom_fields(icon):
-    svg_icon_str = f"svg_icon: {svg(icon)}" if icon else f"svg_icon: {svg('icons/pendant.svg')}"
-    return f"""
-custom_fields:
-  {svg_icon_str}
+    svg_icon_str = f"{svg(icon)}" if icon else f"{svg('icons/default.svg')}"
+    return f"""custom_fields:
+  svg_icon: >
+    [[[return `{svg_icon_str}`;]]]
   info: >
     [[[if (entity.state === 'on' && entity.attributes.brightness) {{
       const brightness = Math.round(entity.attributes.brightness / 2.54);
@@ -95,8 +88,7 @@ custom_fields:
 
 
 def _popup_action(name):
-    return f"""
-double_tap_action:
+    return f"""double_tap_action:
   action: call-service
   service: browser_mod.popup
   service_data:
