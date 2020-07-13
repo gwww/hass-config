@@ -1,5 +1,7 @@
 logger:
   default: info
+  # logs:
+  #   upb_lib: debug
 
 # Text to speech
 # tts:

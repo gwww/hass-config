@@ -1,0 +1,16 @@
+@%homekit_light_button("Garage Door",
+    "sensor.garage_overhead", "icons/garage-door.svg",
+    tap=False)%@
+state_display: >
+  [[[ if (entity.state == "Normal") return "Closed"; else return "Open" ]]]
+tap_action:
+  action: >
+    [[[if (entity.state == 'Normal') {
+      document.documentElement.style.setProperty('--garage-door-up-or-down', 'translateY(0)');
+    } else {
+      document.documentElement.style.setProperty('--garage-door-up-or-down', 'translateY(-50%)');
+    }
+    return 'call-service']]]
+  service: scene.turn_on
+  service_data:
+    entity_id: scene.garage_dr_opener
