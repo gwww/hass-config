@@ -1,22 +1,21 @@
 def scene_button(name, entity):
     return f"""type: "custom:button-card"
 name: {name}
+icon: mdi:lightbulb-group
 entity: {entity}
 aspect_ratio: 1/1
-show_state: true
+show_state: false
 styles:
   card:
     - border-radius: 12px
     - background: #ececec
-    - opacity: 0.6
-  name:
-    - justify-self: start
-    - padding-left: 6%
-  state:
-    - font-size: .75em
-    - color: transparent
+    - opacity: 0.65
   icon:
     - color: gray
+  grid:
+    - grid-template-areas: '"i" "n"'
+    - grid-template-columns: 1fr
+    - grid-template-rows: 2fr 1fr
 tap_action:
   action: call-service
   service: scene.turn_on

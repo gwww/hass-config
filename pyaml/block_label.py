@@ -12,6 +12,5 @@ def block_label(label):
     return \
 f"""type: custom:simple-text-card
 text: {label}
-style: |
-  color: #CCC; font-size: 24px; margin-top: 28px;
+style: 'color: #CCC; font-size: 24px; margin-top: 28px;'
 """

@@ -1,8 +1,6 @@
-@%homekit_light_button("Garage Door",
+@%homekit_button("Garage Door",
     "sensor.garage_overhead", "icons/garage-door.svg",
     tap=False)%@
-state_display: >
-  [[[ if (entity.state == "Normal") return "Closed"; else return "Open" ]]]
 tap_action:
   action: >
     [[[if (entity.state == 'Normal') {
