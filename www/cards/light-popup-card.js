@@ -3640,10 +3640,6 @@ class LightPopupCard extends LitElement {
         var entity = this.config.entity;
         var stateObj = this.hass.states[entity];
         var actionsInARow = this.config.actionsInARow ? this.config.actionsInARow : 4;
-        var brightness = 0;
-        if (stateObj.attributes.brightness) {
-            brightness = stateObj.attributes.brightness / 2.55;
-        }
         var icon = this.config.icon ? this.config.icon : stateObj.attributes.icon ? stateObj.attributes.icon : 'mdi:lightbulb';
         var borderRadius = this.config.borderRadius ? this.config.borderRadius : '12px';
         var supportedFeaturesTreshold = this.config.supportedFeaturesTreshold ? this.config.supportedFeaturesTreshold : 9;
