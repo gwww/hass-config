@@ -21,6 +21,7 @@ lovelace:
       {url: "/local/cards/layout-card.js?v=22", type: module},
       {url: "/local/cards/light-popup-card.js?v=23", type: module},
       {url: "/local/cards/simple-text-card.js?v=22", type: module},
+      {url: "/local/cards/popup-backdrop-filter.css?v=22", type: css},
     ]
 
 # frontend:
