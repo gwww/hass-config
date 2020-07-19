@@ -1,6 +1,29 @@
-@%homekit_button("Garage Door",
-    "sensor.garage_overhead", "icons/garage-door.svg",
-    tap=False)%@
+type: "custom:button-card"
+name: Garage Door
+entity: sensor.garage_overhead
+aspect_ratio: 1/1
+show_icon: false
+show_state: false
+styles:
+  card:
+    - border-radius: 12px
+    - background: #ececec
+    - opacity: 0.65
+  grid:
+    - grid-template-areas: '"i" "n"'
+    - grid-template-columns: 1fr
+    - grid-template-rows: 2fr 1fr
+  custom_fields:
+    centred_svg_icon:
+      [top: 10%, left: 22%, width: 56%, position: absolute]
+state:
+  - {"value": "Violated", "styles": {"card": [{"opacity": "1.0"}]}}
+  - {"value": "Normal", "styles": {"card": [{"opacity": ".65"}]}}
+  - {"value": "unavailable", "styles": {"card": [{"opacity": ".65"}]}}
+custom_fields:
+  @+from svg import svg+@
+  centred_svg_icon: >
+    [[[return `@%svg('icons/garage-door.svg')%@`;]]]
 tap_action:
   action: >
     [[[if (entity.state == 'Normal') {

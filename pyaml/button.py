@@ -3,6 +3,7 @@
 #
 
 import re
+from svg import svg
 
 def homekit_button(name, entity, icon=None, tap=True, double_tap=True):
     tap_action  = "tap_action:\n  action: toggle\n  haptic: light" if tap else ""
@@ -16,38 +17,23 @@ show_icon: false
 show_state: false
 extra_styles: >
   svg path.transition {{transition: fill 1.2s ease;}}
-
 {tap_action}
-
+{double_tap_action}
+{_homekit_style()}
+{_custom_fields(icon)}
+{_state_styles()}
 hold_action:
   action: more-info
   haptic: success
-
-{double_tap_action}
-
-{_homekit_style()}
-
-{_custom_fields(icon)}
-
-state:
-  - value: "on"
-    styles:
-      card:
-        - opacity: 1.0
-  - value: "off"
-    styles:
-      card:
-        - opacity: 0.65
-  - value: "Normal"
-    styles:
-      card:
-        - opacity: 0.65
-  - value: "unavailable"
-    styles:
-      card:
-        - opacity: 0.65
 """
 
+
+def _state_styles():
+    return """state:
+  - {"value": "on", "styles": {"card": [{"opacity": "1.0"}]}}
+  - {"value": "off", "styles": {"card": [{"opacity": ".65"}]}}
+  - {"value": "unavailable", "styles": {"card": [{"opacity": ".65"}]}}
+    """
 
 def _homekit_style():
     return f"""styles:
@@ -117,12 +103,6 @@ def _popup_action(name):
                 #popup > div.range-holder > input[type=range] {{cursor: grab;}}
                 #popup h4 {{font-size: 2em; font-weight: 400;}}
 """
-
-def svg(filename):
-    with open(filename, 'r') as file:
-        data = file.read()
-    return re.sub(r"\n\s*", " ", data)
-
 
 def circle_brightness():
     return re.sub(r"\n\s*", " ", """
