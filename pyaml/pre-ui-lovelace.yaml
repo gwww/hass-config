@@ -41,27 +41,27 @@ views:
                     - @% homekit_button("Pendants",
                           "light.kitchen_pendants", "icons/pendant.svg") %@
                     - @% homekit_button("Pots",
-                          "light.kitchen_pots", "icons/pot-light.svg") %@
+                          "light.kitchen_pots", "icons/pot-light2.svg") %@
                     - @% homekit_button("Table",
-                          "light.kitchen_table", "icons/pot-light.svg") %@
+                          "light.kitchen_table", "icons/pot-light2.svg") %@
 
                 - @% category_block() %@
                     - @%homekit_button("Main",
-                          "light.main_hall_pots", "icons/pot-light.svg")%@
+                          "light.main_hall_pots", "icons/pot-light2.svg")%@
                     - @%homekit_button("Lower",
-                          "light.basement_hall_stairs", "icons/pot-light.svg")%@
+                          "light.basement_hall_stairs", "icons/pot-light2.svg")%@
                     - @%homekit_button("Utility Room",
-                          "light.basement_utillity_room", "icons/pot-light.svg")%@
+                          "light.basement_utillity_room", "icons/pot-light2.svg")%@
 
                 - @% category_block() %@
                     - @%homekit_button("Garage",
-                          "light.outdoors_garage_pots", "icons/pot-light.svg")%@
+                          "light.outdoors_garage_pots", "icons/pot-light2.svg")%@
                     - @%homekit_button("Porch",
-                          "light.outdoors_front_porch", "icons/pot-light.svg")%@
+                          "light.outdoors_front_porch", "icons/pot-light2.svg")%@
                     - @%homekit_button("Lawn Lamp",
-                          "light.outdoors_lawn_lamp", "icons/pot-light.svg")%@
+                          "light.outdoors_lawn_lamp", "icons/pot-light2.svg")%@
                     - @%homekit_button("Low Voltage",
-                          "light.outdoors_low_volt_lights", "icons/pot-light.svg")%@
+                          "light.outdoors_low_volt_lights", "icons/pot-light2.svg")%@
 
                 - @%block_label("Family Room")%@
                 - @%block_label("Living Room")%@
@@ -69,7 +69,7 @@ views:
 
                 - @% category_block() %@
                     - @% homekit_button("Pots", "light.family_room_pots",
-                          "icons/pot-light.svg", tap=False) %@
+                          "icons/pot-light2.svg", tap=False) %@
                       tap_action:
                         action: call-service
                         service: light.toggle
@@ -83,13 +83,13 @@ views:
                     - @%homekit_button("Lamps",
                           "light.living_room_lamps", "icons/lr-lamp.svg") %@
                     - @%homekit_button("Pots",
-                          "light.living_room_pot_lights", "icons/pot-light.svg") %@
+                          "light.living_room_pot_lights", "icons/pot-light2.svg") %@
 
                 - @% category_block() %@
                     - @% homekit_button("Chandelier",
                           "light.dining_room_chandelier", "icons/chandelier.svg") %@
                     - @% homekit_button("Pots",
-                          "light.dining_room_pots", "icons/pot-light.svg") %@
+                          "light.dining_room_pots", "icons/pot-light2.svg") %@
 
                 - @% block_label("Scenes") %@
                 - type: custom:gap-card
