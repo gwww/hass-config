@@ -19,3 +19,4 @@ home-assistant.code-workspace
 home-assistant.log
 __pycache__
 *.pyc
+*~

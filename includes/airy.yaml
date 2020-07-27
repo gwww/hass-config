@@ -1,0 +1,29 @@
+frontend:
+  themes:
+    airy:
+      card-mod-theme: airy
+      card-header: rgba(48,52,52,0.8)
+
+      card-mod-more-info-yaml: |
+        .: |
+          app-toolbar {
+            background: rgba(48,52,52,0.8) !important;
+          }
+          mwc-icon-button {
+            margin-top: -3px;
+            color: #9e9e9e;
+          }
+          .main-title {
+            margin-top: 5px;
+            color: #888;
+            font-family: SF Text;
+          }
+
+        $: |
+          .mdc-dialog {
+            backdrop-filter: blur(20px) brightness(70%);
+          }
+          .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+            background: #ccc;
+          }
+          .mdc-top-app-bar {background: #333;}

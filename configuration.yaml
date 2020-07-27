@@ -1,3 +1,8 @@
+homeassistant:
+  name: Westmin
+  unit_system: metric
+  packages: !include_dir_named includes
+
 logger:
   default: info
   # logs:
@@ -14,18 +19,15 @@ lovelace:
   mode: yaml
   resources:
     [
-      {url: "/local/cards/button-card.js?v=22", type: module},
-      {url: "/local/cards/card-mod.js?v=22", type: module},
-      {url: "/local/cards/custom-header.js?v=22", type: module},
-      {url: "/local/cards/gap-card.js?v=22", type: module},
-      {url: "/local/cards/layout-card.js?v=22", type: module},
-      {url: "/local/cards/light-popup-card.js?v=23", type: module},
-      {url: "/local/cards/simple-text-card.js?v=22", type: module},
-      {url: "/local/cards/popup-backdrop-filter.css?v=22", type: css},
+      {url: "/local/cards/button-card.js?v=25", type: module},
+      {url: "/local/cards/card-mod.js?v=25", type: module},
+      {url: "/local/cards/custom-header.js?v=25", type: module},
+      {url: "/local/cards/env-canada-rain-radar.js?v=25", type: module},
+      {url: "/local/cards/gap-card.js?v=25", type: module},
+      {url: "/local/cards/layout-card.js?v=25", type: module},
+      {url: "/local/cards/light-popup-card.js?v=25", type: module},
+      {url: "/local/cards/simple-text-card.js?v=25", type: module},
     ]
-
-# frontend:
-#   themes: !include_dir_merge_named frontend-themes
 
 browser_mod:
   prefix: browser_
