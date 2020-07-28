@@ -7,7 +7,7 @@ frontend:
       card-mod-more-info-yaml: |
         .: |
           app-toolbar {
-            background: rgba(48,52,52,0.8) !important;
+            background: var(--card-header) !important;
           }
           mwc-icon-button {
             margin-top: -3px;
@@ -15,7 +15,7 @@ frontend:
           }
           .main-title {
             margin-top: 5px;
-            color: #888;
+            color: #999;
             font-family: SF Text;
           }
 
@@ -25,5 +25,8 @@ frontend:
           }
           .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
             background: #ccc;
+            border-radius: 1em;
           }
-          .mdc-top-app-bar {background: #333;}
+        ha-header-bar:
+          $: >
+            .mdc-top-app-bar {background: var(--card-header);}

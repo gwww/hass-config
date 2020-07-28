@@ -68,40 +68,27 @@ def _popup_action(name):
   service_data:
     title: {name}
     deviceID: this
-    # autoclose_popup_card: 5000
-    style:
-      --ha-card-border-radius: 1em
-      --more-info-header-color: rgba(255,255,255,1)
-      background: none
-      box-shadow: none
     card:
-      type: vertical-stack
-      cards:
-        - type: entities
-          show_header_toggle: false
+      type: entities
+      show_header_toggle: false
+      style: 'ha-card {{border-radius: 0em; background: #686868;}}'
+      entities:
+        - type: custom:light-popup-card
+          entity: '[[[ return entity.entity_id ]]]'
+          icon: none
+          fullscreen: false
+          brightnessWidth: 130px
+          brightnessHeight: 360px
+          borderRadius: 1.7em
+          sliderColor: '#c7c7c7'
+          sliderTrackColor: rgba(25, 25, 25, 0.9)
+          actionSize: 4.5em
+          actionsInARow: 2
           style: >
-            ha-card {{animation: pop-in 0.8s 
-              cubic-bezier(0.16, 1, 0.3, 1) both; transform-origin: center;
-              border-radius: 1em; padding: 0.3em 1.25em 0.4em 0.5em; 
-              box-shadow: none; background: #888; }}
-            @keyframes pop-in {{0% {{transform: scale(0.6); opacity: 0;}}
-              20% {{ opacity: 0; }} 100% {{transform: scale(1); opacity: 0.9;}}}}
-          entities:
-            - type: custom:light-popup-card
-              entity: '[[[ return entity.entity_id ]]]'
-              icon: none
-              fullscreen: false
-              brightnessWidth: 130px
-              brightnessHeight: 360px
-              borderRadius: 1.7em
-              sliderColor: '#c7c7c7'
-              sliderTrackColor: rgba(25, 25, 25, 0.9)
-              actionSize: 4.5em
-              actionsInARow: 2
-              style: >
-                #popup {{margin: -2.4em 0 1.4em 0;}}
-                #popup > div.range-holder > input[type=range] {{cursor: grab;}}
-                #popup h4 {{font-size: 2em; font-weight: 400;}}
+            #popup {{margin: -2.4em 0 .4em 0;}}
+            #popup > div.range-holder > input[type=range] {{cursor: grab;}}
+            #popup h4 {{margin-bottom: .7em; color: #ccc;
+              font-size: 2em; font-weight: 400;}}
 """
 
 def circle_brightness():
