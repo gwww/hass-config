@@ -35,6 +35,16 @@ browser_mod:
     99980b13-dabc9563:
       name: macbook_firefox
 
+weather:
+  - platform: environment_canada
+    station: ON/s0000430
+    name: Ottawa
+
+# camera:
+#   - platform: environment_canada
+#     station: XFT
+#     name: Ottawa-Radar
+
 sensor:
   - platform: time_date
     display_options:
@@ -53,6 +63,8 @@ sensor:
         value_template: >
           {{as_timestamp(states.sun.sun.attributes.next_setting) |
               timestamp_custom('%A %-H:%M')}}
+  - platform: environment_canada
+    station: ON/s0000430
 
 elkm1:
   host: elk://192.168.1.201

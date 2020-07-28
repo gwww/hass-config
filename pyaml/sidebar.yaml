@@ -17,7 +17,6 @@
         h4 {font-weight: 300; font-size: 1.25em; margin: 5px 0 5px 0;}
 
 - type: weather-forecast
-  entity: weather.home
+  entity: weather.ottawa
   name: Ottawa
-  style: |
-    ha-card {background: none; color: #e3e3e3}
+  style: 'ha-card {background: none; color: #e3e3e3}'
