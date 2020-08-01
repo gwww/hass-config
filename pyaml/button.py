@@ -91,33 +91,32 @@ def _popup_action(name):
               font-size: 2em; font-weight: 400;}}
 """
 
+
 def circle_brightness():
     return re.sub(r"\n\s*", " ", """
-      if ("dimmable" in entity.attributes) {
-        let brightness = 0;
-        let text = "";
-        if ("brightness" in entity.attributes) {
-          brightness = Math.round(entity.attributes.brightness / 2.54);
-          text = brightness + '%';
-        } else if (entity.state == 'on') {
-          brightness = 100;
-          text = 'On';
-        } else {
-          text = 'Off'
-        }
-        const radius = 20.5;
-        const circumference = radius * 2 * Math.PI;
-        return
-          `<svg viewBox="0 0 50 50">
-            <circle cx="25" cy="25" r="${radius}" stroke="#d8d8d8"
-              stroke-width="0.75" fill="none";/>
-            <circle cx="25" cy="25" r="${radius}" stroke="#999"
-              stroke-width="1.75" fill="none"
-              style="transform: rotate(-90deg); transform-origin: 50% 50%;
-              stroke-dasharray: ${circumference};
-              stroke-dashoffset: ${circumference-brightness/100*circumference};"/>
-            <text x="25" y="26" fill="#999" font-size="14"
-               text-anchor="middle" dominant-baseline="middle">${text}</text>
-          </svg>`;
+      let brightness = 0;
+      let text = "";
+      if ("brightness" in entity.attributes) {
+        brightness = Math.round(entity.attributes.brightness / 2.54);
+        text = brightness + '%';
+      } else if (entity.state == 'on') {
+        brightness = 100;
+        text = 'On';
+      } else {
+        text = 'Off'
       }
+      const radius = entity.attributes.dimmable ? 20.5 : 0;
+      const circumference = radius * 2 * Math.PI;
+      return
+        `<svg viewBox="0 0 50 50">
+          <circle cx="25" cy="25" r="${radius}" stroke="#d8d8d8"
+            stroke-width="0.75" fill="none";/>
+          <circle cx="25" cy="25" r="${radius}" stroke="#999"
+            stroke-width="1.75" fill="none"
+            style="transform: rotate(-90deg); transform-origin: 50% 50%;
+            stroke-dasharray: ${circumference};
+            stroke-dashoffset: ${circumference-brightness/100*circumference};"/>
+          <text x="25" y="26" fill="#999" font-size="14"
+             text-anchor="middle" dominant-baseline="middle">${text}</text>
+        </svg>`;
     """)
