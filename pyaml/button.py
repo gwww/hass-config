@@ -16,7 +16,7 @@ aspect_ratio: 1/1
 show_icon: false
 show_state: false
 extra_styles: >
-  svg path.transition {{transition: fill 1.2s ease;}}
+  svg path.transition {{transition: fill 1.5s ease;}}
 {tap_action}
 {double_tap_action}
 {_homekit_style()}
