@@ -27,6 +27,7 @@ lovelace:
       {url: "/local/cards/layout-card.js?v=25", type: module},
       {url: "/local/cards/light-popup-card.js?v=25", type: module},
       {url: "/local/cards/simple-text-card.js?v=25", type: module},
+      {url: "/local/cards/stack-in-card.js?v=25", type: module},
     ]
 
 browser_mod:
